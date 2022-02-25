@@ -39,7 +39,7 @@ export const getServerSideProps = async (ctx) =>{
   const media_type=ctx.params.media_type
   
     try {
-    const res = await fetch(`https://api.themoviedb.org/3/${media_type}/${movie_id}?api_key=${API_KEY}&language=en-US` || `https://api.themoviedb.org/3/${media_type}/${movie_id}?api_key=${API_KEY}&language=en-US `); 
+    const res = await fetch(`https://api.themoviedb.org/3/${media_type}/${movie_id}?api_key=${API_KEY}&language=en-US`); 
         const data = await res.json();
     return {
     props: {
