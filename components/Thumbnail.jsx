@@ -4,10 +4,17 @@ import Image from "next/image"
 import { useRouter } from "next/router";
 
 const BASE_URL = "https://image.tmdb.org/t/p/original";
-const Thumbnail = ({ result }) => {
-   const router = useRouter();
+const Thumbnail = ({ result, category }) => {
+  const router = useRouter();
+  // const handleRoute = () => {
+  //   category == 'movie' && router.push(`/detail/${result.id}/${category}`)
+  //   router.push(`/detail/${result.id}/series`)
+    
+  // }
+
   return (
-    <div onClick={()=>router.push(`/detail/${result.id}`)} className="p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 ">
+    
+    <div onClick={() =>router.push(`/detail/${result.id}/${result.media_type}`) } className="p-2 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 ">
       <Image className='rounded-xl'layout="responsive" height={1080} width={1920} src={`${BASE_URL}${result.backdrop_path || result.poster_path}` || `${BASE_URL}${result.poster_path}`} />
       <div className="p-2">
         <p className="truncate max-w-md">{result.overview}</p>

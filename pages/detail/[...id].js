@@ -35,9 +35,11 @@ const MovieDetail = ({ result }) => {
 export default MovieDetail
 
 export const getServerSideProps = async (ctx) =>{
-    const movie_id = ctx.params.id;
+  const movie_id = ctx.params.id;
+  const media_type=ctx.params.media_type
+  
     try {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`); 
+    const res = await fetch(`https://api.themoviedb.org/3/${media_type}/${movie_id}?api_key=${API_KEY}&language=en-US` || `https://api.themoviedb.org/3/${media_type}/${movie_id}?api_key=${API_KEY}&language=en-US `); 
         const data = await res.json();
     return {
     props: {

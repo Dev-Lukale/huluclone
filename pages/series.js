@@ -22,8 +22,10 @@ const series = ({results}) => {
 export default series;
 
 export async function getServerSideProps(context) {
+    //get the genre query value from the url
   const genre = context.query.genre;
   try {
+      //make an api call with url part one or default to second part if the query variable is undefined
         const res = await fetch(`https://api.themoviedb.org/3${seriesreq[genre]?.url || seriesreq.fetchTV.url}`);
     const data = await res.json()
     return {
